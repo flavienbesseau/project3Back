@@ -4,14 +4,15 @@ const swaggerUi = require("swagger-ui-express");
 const YAML = require("yamljs");
 const { inTestEnv, inProdEnv, SERVER_PORT } = require("./env");
 const { connection } = require("./db");
+
 const app = express();
 
-connection.connect(function (err) {
+connection.connect((err) => {
   if (err) {
-    console.error("error connecting: " + err.stack);
+    console.error(`error connecting: ${err.stack}`);
     return;
   }
-  console.log("connected as id " + connection.threadId);
+  console.log(`connected as id ${connection.threadId}`);
 });
 
 // docs
@@ -56,6 +57,31 @@ app.get("/api/experiences", (req, res) => {
       res.status(200).json(results);
     }
   });
+});
+
+app.get("/api/questions", (req, res) => {
+  connection.query("SELECT * from ms_question", (err, results) => {
+    if (err || results.length === 0) {
+      res.status(500).send("Error retrieving data");
+    } else {
+      res.status(200).json(results);
+    }
+  });
+});
+
+app.get("/api/surveys/:id", (req, res) => {
+  connection.query(
+    "SELECT q.text_rating, q.text_comment FROM ms_question q LEFT JOIN ms_question_order o ON q.id = o.fk_question_id WHERE o.fk_survey_id = ?",
+    [req.params.id],
+    (err, results) => {
+      if (err || results.length === 0) {
+        console.log(err);
+        res.status(500).send("Error retrieving data");
+      } else {
+        res.status(200).json(results);
+      }
+    }
+  );
 });
 
 // server setup
