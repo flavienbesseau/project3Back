@@ -73,27 +73,8 @@ app.get("/api/questions", (req, res) => {
   });
 });
 
-// app.get("/api/surveys/:id", (req, res) => {
-//   connection.query(
-//     "SELECT q.text_rating, q.text_comment FROM ms_question q LEFT JOIN ms_question_order o ON q.id = o.fk_question_id WHERE o.fk_survey_id = ?",
-//     [req.params.id],
-//     (err, results) => {
-//       if (err || results.length === 0) {
-//         console.log(err);
-//         res.status(500).send("Error retrieving data");
-//       } else {
-//         res.status(200).json(results);
-//       }
-//     }
-//   );
-// });
-
 app.get("/api/survey", (req, res) => {
-  // let hospitalId = req.query.hospitalId;
-  // let specialtyId = req.query.specialtyId;
   const { experienceId } = req.query;
-  // console.log(hospitalId);
-  // console.log(specialtyId);
   console.log(experienceId);
   if (typeof experienceId === "undefined") {
     res
@@ -101,7 +82,7 @@ app.get("/api/survey", (req, res) => {
       .send("Query param 'experienceId' is required, but received 'undefined'");
   } else {
     connection.query(
-      "SELECT q.text_rating, q.text_comment FROM ms_question q LEFT JOIN ms_question_order o ON q.id = o.fk_question_id LEFT JOIN ms_survey s ON s.id = o.fk_survey_id WHERE s.fk_experience_id = ?",
+      "SELECT q.text_rating, q.text_comment, q.id FROM ms_question q LEFT JOIN ms_question_order o ON q.id = o.fk_question_id LEFT JOIN ms_survey s ON s.id = o.fk_survey_id WHERE s.fk_experience_id = ?",
       [experienceId],
       (err, results) => {
         if (err || results.length === 0) {
@@ -115,27 +96,19 @@ app.get("/api/survey", (req, res) => {
   }
 });
 
-// un controler avec comme para (lhopital service+type dhospit) et qui retourne le bon survey
-
 app.post("/api/surveys/responses", (req, res) => {
-  const {
-    score,
-    text_answer,
-    fk_question_id,
-    fk_user_id,
-    fk_hospital_id,
-    fk_speciality_id,
-  } = req.body;
+  const responses = req.body; // Array of responses
+  const insertString = responses.reduce(
+    (accumulator, response) =>
+      accumulator +
+      `(${response.score}, "${response.text_answer}", ${response.id}, ${response.hospitalId}, ${response.specialtyId}, CURDATE(), "${response.pseudo}"), `,
+    ""
+  );
   connection.query(
-    "INSERT INTO ms_response(score, text_answer, fk_question_id, fk_user_id, fk_hospital_id, fk_speciality_id) VALUES(?, ?, ?, ?, ?, ?)",
-    [
-      score,
-      text_answer,
-      fk_question_id,
-      fk_user_id,
-      fk_hospital_id,
-      fk_speciality_id,
-    ],
+    `INSERT INTO ms_response(score, text_answer, fk_question_id, fk_hospital_id, fk_specialty_id, post_date, pseudo) VALUES ${insertString.substring(
+      0,
+      insertString.length - 2
+    )};`,
     (err, results) => {
       if (err) {
         console.log(err);
