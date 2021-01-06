@@ -1,10 +1,10 @@
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const api = require("./routes");
 
 const swaggerUi = require("swagger-ui-express");
 const YAML = require("yamljs");
+const api = require("./routes");
 const { inTestEnv, inProdEnv, SERVER_PORT } = require("./env");
 const { connection } = require("./db");
 

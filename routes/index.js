@@ -1,5 +1,6 @@
 // const thingsRoutes = require('./things');
 const express = require("express");
+
 const router = express.Router();
 
 const hospitals = require("./hospitals");
