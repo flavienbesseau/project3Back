@@ -55,9 +55,9 @@ CREATE TABLE IF NOT EXISTS `ms_specialty` (
 CREATE TABLE IF NOT EXISTS `ms_response` (
   `id` int NOT NULL AUTO_INCREMENT,
   `score` int DEFAULT NULL,
-  `text_answer` varchar(45) DEFAULT NULL,
+  `text_answer` varchar(255) DEFAULT NULL,
   `fk_question_id` int NOT NULL,
-  `pseudo` varchar(45) NOT NULL,
+  `pseudo` varchar(155) NOT NULL,
   `fk_hospital_id` int NOT NULL,
   `fk_specialty_id` int NOT NULL,
   `post_date` date NOT NULL,
