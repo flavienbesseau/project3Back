@@ -7,11 +7,12 @@ router.post("/", (req, res) => {
   const responses = req.body; // Array of responses
   const insertString = responses.reduce(
     (accumulator, response) =>
-      `${accumulator}(${response.score}, "${response.text_answer}", ${response.id}, ${response.hospitalId}, ${response.specialtyId}, CURDATE(), "${response.pseudo}", "${response.email}"), `,
+      `${accumulator}(${response.score}, "${response.text_answer}", CURDATE(), "${response.pseudo}", "${response.email}", ${response.id},  ${response.hospitalId}, ${response.specialtyId}, ${response.experienceId}), `,
     ""
   );
+
   connection.query(
-    `INSERT INTO ms_response(score, text_answer, fk_question_id, fk_hospital_id, fk_specialty_id, post_date, pseudo, email) VALUES ${insertString.substring(
+    `INSERT INTO ms_response(score, text_answer, post_date, pseudo, email, fk_question_id, fk_hospital_id, fk_specialty_id, fk_experience_id) VALUES ${insertString.substring(
       0,
       insertString.length - 2
     )};`,
@@ -21,6 +22,7 @@ router.post("/", (req, res) => {
         res.status(500).send("Error saving a survey");
       } else {
         res.status(200).send(results);
+        console.log(insertString);
       }
     }
   );
