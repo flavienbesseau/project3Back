@@ -9,6 +9,7 @@ const survey = require("./survey");
 const register = require('./register');
 const login = require('./login');
 const dashboard = require('./dashboard');
+const informationsgenerales = require("./informationsgenerales");
 
 router.use("/hospitals", hospitals);
 router.use("/specialties", specialties);
@@ -19,6 +20,7 @@ router.use("/survey", survey);
 router.use('/register', register);
 router.use('/login', login);
 router.use('/dashboard', dashboard);
+router.use("/informationsgenerales", informationsgenerales);
 
 // // eslint-disable-next-line
 // module.exports = (app) => {
