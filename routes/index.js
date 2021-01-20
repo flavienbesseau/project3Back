@@ -9,6 +9,7 @@ const experiences = require("./experiences");
 const responses = require("./responses");
 const questions = require("./questions");
 const survey = require("./survey");
+const informationsgenerales = require("./informationsgenerales");
 
 router.use("/hospitals", hospitals);
 router.use("/specialties", specialties);
@@ -16,6 +17,7 @@ router.use("/experiences", experiences);
 router.use("/surveys/responses", responses);
 router.use("/questions", questions);
 router.use("/survey", survey);
+router.use("/informationsgenerales", informationsgenerales);
 
 // // eslint-disable-next-line
 // module.exports = (app) => {
