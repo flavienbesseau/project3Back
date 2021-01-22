@@ -5,10 +5,10 @@ const rounds = 10;
 const { createUserModel, getAllUsersModel } = require('../models/registrations.models');
 
 const createUser = async (req, res) => {
-  const { name, email, password, created_account } = req.body;
+  const { name, email, password } = req.body;
   const hash = await bcrypt.hash(password, rounds);
     try {
-      await pool.promise().query(createUserModel, [name, email, hash, created_account]);
+      await pool.promise().query(createUserModel, [name, email, hash]);
       res.status(200).json({
         success: true,
         status: 'success, user added.',
