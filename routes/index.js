@@ -16,7 +16,7 @@ router.use("/hospitals", hospitals);
 router.use("/specialties", specialties);
 router.use("/experiences", experiences);
 router.use("/surveys/responses", responses);
-router.use("/questions", questions);
+router.use("/questions", questions); 
 router.use("/survey", survey);
 router.use('/register', register);
 router.use('/login', login);

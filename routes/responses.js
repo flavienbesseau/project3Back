@@ -28,4 +28,10 @@ router.post("/", (req, res) => {
   );
 });
 
+router.get('/', (req, res) => {
+  connection.query(`SELECT * FROM ms_response`, (err, results) => {
+    res.status(200).json(results);
+  })
+});
+
 module.exports = router;
