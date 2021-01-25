@@ -10,22 +10,21 @@ const register = require('./register');
 const login = require('./login');
 const dashboard = require('./dashboard');
 const informationsgenerales = require("./informationsgenerales");
+const repartitionChart = require('./repartitionChart');
 
 router.use("/hospitals", hospitals);
 router.use("/specialties", specialties);
 router.use("/experiences", experiences);
 router.use("/surveys/responses", responses);
-router.use("/questions", questions);
+router.use("/questions", questions); 
 router.use("/survey", survey);
 router.use('/register', register);
 router.use('/login', login);
 router.use('/dashboard', dashboard);
 router.use("/informationsgenerales", informationsgenerales);
+router.use('/repartition-chart', repartitionChart);
 
-// // eslint-disable-next-line
-// module.exports = (app) => {
-//   // app.use('/things', thingsRoutes);
-//   app.use()
-// };
+
+
 
 module.exports = router;
