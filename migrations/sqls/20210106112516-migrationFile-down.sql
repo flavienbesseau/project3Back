@@ -10,5 +10,5 @@ DROP TABLE IF EXISTS `ms_response`;
 DROP TABLE IF EXISTS `ms_specialty`;
 DROP TABLE IF EXISTS `ms_specialty_has_ms_experience`;
 DROP TABLE IF EXISTS `ms_user`;
-DROP TABLE IF EXISTS `ms_user_role` ;
+DROP TABLE IF EXISTS `ms_user_role`;
 SET foreign_key_checks=1;
