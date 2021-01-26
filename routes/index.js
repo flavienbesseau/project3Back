@@ -11,6 +11,7 @@ const login = require('./login');
 const dashboard = require('./dashboard');
 const informationsgenerales = require("./informationsgenerales");
 const repartitionChart = require('./repartitionChart');
+const feedbacks = require('./feedbacks');
 
 router.use("/hospitals", hospitals);
 router.use("/specialties", specialties);
@@ -23,6 +24,7 @@ router.use('/login', login);
 router.use('/dashboard', dashboard);
 router.use("/informationsgenerales", informationsgenerales);
 router.use('/repartition-chart', repartitionChart);
+router.use('/feedbacks', feedbacks);
 
 
 
