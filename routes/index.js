@@ -13,6 +13,7 @@ const informationsgenerales = require("./informationsgenerales");
 const repartitionChart = require("./repartitionChart");
 const averageHospital = require("./averagehospital");
 const countReviews = require("./numberReview");
+const averageThisMonth = require("./averageThisMonth");
 
 router.use("/hospitals", hospitals);
 router.use("/specialties", specialties);
@@ -27,5 +28,6 @@ router.use("/informationsgenerales", informationsgenerales);
 router.use("/repartition-chart", repartitionChart);
 router.use("/averageHospital", averageHospital);
 router.use("/countReviews", countReviews);
+router.use("/averageThisMonth", averageThisMonth);
 
 module.exports = router;
