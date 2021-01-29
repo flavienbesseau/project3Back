@@ -1,3 +1,5 @@
+
+
 CREATE TABLE IF NOT EXISTS `ms_hospital` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
