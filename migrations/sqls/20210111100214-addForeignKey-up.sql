@@ -10,7 +10,7 @@
 
 ALTER TABLE `ms_response` 
 ADD COLUMN `fk_experience_id` INT NOT NULL AFTER `fk_specialty_id`,
-ADD INDEX `fk_ms_experience_1_idx` (`fk_experience_id` ASC) VISIBLE;
+ADD INDEX `fk_ms_experience_1_idx` (`fk_experience_id` ASC);
 
 ALTER TABLE `ms_response` 
 ADD CONSTRAINT `fk_ms_experience_1`

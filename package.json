@@ -8,8 +8,8 @@
     "start:watch": "npm-run-all migrate-db start:server:watch",
     "start:server": "node app.js",
     "start:server:watch": "nodemon -e yaml,js,json app.js",
-    "migrate-db": "db-migrate up",
-    "rollback-last-db-migration": "db-migrate down",
+    "migrate-db": "npx db-migrate up",
+    "rollback-last-db-migration": "npx db-migrate down",
     "lint": "eslint --fix ."
   },
   "husky": {
@@ -35,7 +35,7 @@
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "db-migrate": "^0.11.12",
-    "db-migrate-mysql": "^2.1.1",
+    "db-migrate-mysql": "^2.1.2",
     "dotenv": "^8.2.0",
     "express": "4.17.1",
     "express-async-handler": "^1.1.4",
