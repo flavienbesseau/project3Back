@@ -30,7 +30,7 @@ const login = async (req, res) => {
   }
 }
 
-const getSession = async (req, res) => {
+const getSession = (req, res) => {
   if(req.session.user) {
     res.send({ loggedIn: true, user: req.session.user })
   } else {

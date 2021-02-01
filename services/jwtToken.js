@@ -5,6 +5,7 @@ const createToken = ( id ) => {
     data: id,
     exp: Math.floor(Date.now() / 1000) + (60 * 60) // 1 hour expiration
   },
+  
   process.env.JWT_SECRET);
   return token;
 }
