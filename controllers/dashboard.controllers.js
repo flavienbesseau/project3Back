@@ -1,8 +1,8 @@
-const { pool } = require("../db");
+const connection = require("../db");
 
 const dashboard = async (req, res) => {
   try {
-    const [rows] = await pool.promise().query(`SELECT * FROM ms_user`);
+    const [rows] = await connection.query(`SELECT * FROM ms_user`);
     return res.status(200).json({
       result: rows,
       status: 'sucess',

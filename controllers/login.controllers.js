@@ -12,14 +12,12 @@ const login = async (req, res) => {
     const match = await bcrypt.compare(password, rows[0].password);
       if(match) {
         const token = createToken(id);
-        req.session.user = { email, id };
         res.cookie('authcookie', token, { httpOnly:true }); 
         return res.status(200).json({
           id, 
           name,
           fk_hospital_id,
-          email,
-          token
+          email
         });
       } 
         return res.status(403).json('wrong credentials')
@@ -30,15 +28,6 @@ const login = async (req, res) => {
   }
 }
 
-const getSession = (req, res) => {
-  if(req.session.user) {
-    res.send({ loggedIn: true, user: req.session.user })
-  } else {
-    res.send({ loggedIn: false })
-  }
-}
-
 module.exports = {
-  login,
-  getSession
+  login
 }

@@ -1,7 +1,7 @@
 const express = require("express");
 
 const router = express.Router();
-const { connection } = require("../db");
+const {connection} = require("../db");
 
 router.post("/", (req, res) => {
   const responses = req.body; // Array of responses
