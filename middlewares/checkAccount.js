@@ -1,9 +1,9 @@
-const { pool } = require("../db");
+const connection = require("../db");
 
 const checkAccount = async (req, res, next) => {
   try {
     const { email } = req.body;
-    const [rows] = await pool.promise().query(`SELECT ms_user.email FROM ms_user`);
+    const [rows] = await connection.query(`SELECT ms_user.email FROM ms_user`);
 
     const emailExists = await rows.filter(element => element.email === email);
 
