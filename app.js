@@ -7,7 +7,7 @@ const swaggerUi = require("swagger-ui-express");
 const YAML = require("yamljs");
 const api = require("./routes");
 const { inTestEnv, inProdEnv, SERVER_PORT } = require("./env");
-const connection = require("./db");
+const { connection } = require("./db");
 
 const app = express();
 app.use(
