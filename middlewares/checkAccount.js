@@ -8,7 +8,14 @@ const checkAccount = async (req, res, next) => {
     const emailExists = await rows.filter(element => element.email === email);
 
     if(emailExists.length > 0) {
-      res.status(400).json('Email already exists')
+      res.status(400).json({
+        err: {
+          errors: ['Email already exist'],
+          params: {
+            path: 'email'
+          }
+        }
+      })
     } else {
       next();
     }
