@@ -16,6 +16,7 @@ const averageHospital = require("./averagehospital");
 const countReviews = require("./numberReview");
 const averageThisMonth = require("./averageThisMonth");
 const scoreConfiance = require("./scoreConfiance");
+const logout = require('./logout');
 
 router.use("/hospitals", hospitals);
 router.use("/specialties", specialties);
@@ -33,5 +34,6 @@ router.use("/averageHospital", averageHospital);
 router.use("/countReviews", countReviews);
 router.use("/averageThisMonth", averageThisMonth);
 router.use("/scoreConfiance", scoreConfiance);
+router.use('/logout', logout);
 
 module.exports = router;
