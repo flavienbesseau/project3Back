@@ -1,14 +1,21 @@
-const { pool } = require("../db");
+const { connection } = require("../db");
 
 const checkAccount = async (req, res, next) => {
   try {
     const { email } = req.body;
-    const [rows] = await pool.promise().query(`SELECT ms_user.email FROM ms_user`);
+    const [rows] = await connection.promise().query(`SELECT ms_user.email FROM ms_user`);
 
     const emailExists = await rows.filter(element => element.email === email);
 
     if(emailExists.length > 0) {
-      res.status(400).json('Email already exists')
+      res.status(400).json({
+        err: {
+          errors: ['Email already exist'],
+          params: {
+            path: 'email'
+          }
+        }
+      })
     } else {
       next();
     }

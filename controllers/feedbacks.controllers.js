@@ -1,4 +1,4 @@
-const { pool } = require('../db');
+const { pool } = require("../db");
 const { getFeedbacksModels } = require('../models/feedbacks.models');
 
 const getAllFeedbacks = async (req, res) => {
