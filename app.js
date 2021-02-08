@@ -1,11 +1,11 @@
 const express = require("express");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
-
 const swaggerUi = require("swagger-ui-express");
 const YAML = require("yamljs");
 const api = require("./routes");
 const { inTestEnv, inProdEnv, SERVER_PORT } = require("./env");
+const connection = require('./db');
 
 const app = express();
 app.use(
@@ -31,6 +31,22 @@ app.get("/", (req, res) => {
 
 // routes
 app.use("/api", api);
+
+connection.connection.on('error', (err) => {
+  console.error('error when connecting to db:', err);
+  if(err.code === 'PROTOCOL_CONNECTION_LOST') {
+    connection.init();
+    console.log('reconnected')
+  }
+})
+
+connection.pool.on('error', (err) => {
+  console.error('error when connecting to db:', err);
+  if(err.code === 'PROTOCOL_CONNECTION_LOST') {
+    connection.init();
+    console.log('reconnected')
+  }
+})
 
 // server setup
 const server = app.listen(SERVER_PORT, () => {
