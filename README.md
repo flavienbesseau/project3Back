@@ -1,83 +1,101 @@
-# Setup
+# Hospitalidee
 
-Install dependencies and the migration tool :
-```sh
-npm i
-npm i -g db-migrate db-migrate-mysql
-```
-Copy the environnement variables : 
-```
-cp .env.sample .env
-```
-This `.env` file allows to change the way the Node server connects to the database, but you probably won't have to change any of those variables unless you want to deploy the app yourself or connect it to a specific DB.
+Hospitalidee is a web application allowing patients to give their opinion on their hospital experience. Hospital managers will be able to log in to access a dashboard containing several statistics concerning their establishments. This in order to improve the services offered
 
-### Linux (Unbuntu 20.04)
+## Technos, bookstores:
 
-Copy and execute those commands one by one in a terminal and you should be good to go.
+1. mySQL: https://dev.mysql.com/doc/refman/8.0/en/
+2. Node: https://dev.mysql.com/doc/refman/8.0/en/
+3. Express: http://expressjs.com/
+4. DB-migrate: https://db-migrate.readthedocs.io/en/latest/Getting%20Started/usage/
 
-### Run the automated tests
-```sh
-npm run test:setup-and-run
-```
-Once you've exectued the previous command, you can just do : 
-```sh
-npm run test
-```
-It will just execute the tests without settting up the DB and running the migrations.
+## Prerequisites:
 
-### Run the app
+1. Node: https://nodejs.org/en/
+2. Git: https://git-scm.com/
+3. mySQL: https://www.mysql.com/fr/
 
-Run migration and launch server serparately :
+## Authors:
 
-```sh
-npm run migrate-db
-npm run start:watch:server
-```
-All in once:
+Alexandre Dietsch, Louise Mehouas, Flavien Besseau
+
+## License:
+
+This project is subject to customer rights.
+
+## Steps:
+
+1. In your terminal, go to the folder in which you want to have the project.
+
+2. To retrieve the backend, type:
 
 ```sh
-npm run start:watch
+ git clone  https://github.com/WildCodeSchool/tlse0920-js-hospitalidee-tdb-back.git
 ```
-### Run the automated tests
+
+3. Still in the terminal, go to the back folder, then type:
 
 ```sh
-npm run test:migrate-db
-npm run test
+ npm install
 ```
 
-# Database migrations
+4. Create a file called `.env".
 
-If, while developping, you must change the structure of the database to fit new requirements, 
-you HAVE TO write a database migration script in order for the changes to be propagated 
-in contributors local databases but also in the pre-prod/prod environments' DBs.
-
-Here's an exemple of the helper command usage : 
-```
-NAME=splitNameOnUsers npm run create-db-migration
-```
-(Replace the NAME variable value by the name of your change). It will create two SQL files in the `migrations/sqls` folder. One file is executed on the DB when applying changes (migrating up) and the other is run when rolling back changes (migrating down).
-
-To apply the changes that have not yet been synced to the database :
-```
-npm run migrate-db
-```
-
-## RTFM (but ask for help if needed)
-
-Documentation [here](https://db-migrate.readthedocs.io/en/latest/)
-
-
-
-# ES Lint
-
-To launch a check :
+5. In it, write this filling in your database username and password:
 
 ```sh
-npm run lint 
+NODE_ENV = dev
+
+SERVER_PORT = 5000
+SERVER_PORT_TEST = 5000
+
+DB_HOST = localhost
+DB_PORT = 3306
+DB_USER =
+DB_PASS =
+DB_NAME = hospitable
+
+DB_HOST_TEST = localhost
+DB_PORT_TEST = 3306
+DB_USER_TEST =
+DB_PASS_TEST =
+DB_NAME_TEST = hospitalidee
+
+#Runtime config
+PORT = 5000
+
+#JWT
+JWT_SECRET = jwt secret
 ```
 
-# API Docs
-You can access the docs, available by default at [localhost:5000/api-docs](http://localhost:5000/api-docs).
+6. In your terminal, go to your mysql and then create the "hospitalidee" database by doing:
 
-You can modify the docs by changing the `docs/swagger.yaml` file.
+```sh
+ mysql -u root -p
+```
 
+```sh
+CREATE DATABASE hospitalidee;
+```
+
+7. Then type that to fill the database.:
+
+```sh
+ npx db-migrate up
+```
+
+8. Start the server by typing:
+
+```sh
+ npm run start: watch
+```
+
+## Credits:
+
+Thanks to the Wild Code School and its team for their support in our project. Thank you to the customer for trusting us and for his encouragement
+
+## Contact:
+
+Alexandre Dietsch: dietschalex@gmail.com  
+Louise Mehouas: mehouaslouise0@gmail.com  
+Flavien Besseau: besseau.flavien@gmail.com

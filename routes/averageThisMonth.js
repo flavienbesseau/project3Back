@@ -1,7 +1,7 @@
 const express = require("express");
 
 const router = express.Router();
-const { connection } = require("../db");
+const {connection} = require("../db");
 
 router.get("/doctorsRelation/:id", (req, res) => {
   const hospitalId = req.params.id;
