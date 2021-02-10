@@ -186,7 +186,7 @@ paths:
                 title: "Informations not found"
                 type: "string"
                 example: "Not found"
-  /feedbacks2:
+  /feedbacks:
     post:
       tags:
       summary: "get feedbacks from every questions"
@@ -327,14 +327,33 @@ paths:
       summary: "collect responses by experiences id to fill repartition chart"
       description: "array of responses with an id"
       parameters:
-        - name: userId
-          in: path
-          required: true
-          description: Parameter description in CommonMark or HTML.
-          schema:
-            type : integer
-            format: int64
-            minimum: 1
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "Sample"
+                type: "object"
+                properties:
+                  placeholder:
+                    type: "string"
+                    description: 
+
+        500:
+          description: "Server Error"
+          content:
+            text/plain:
+              schema:
+                title: "Informations not found"
+                type: "string"
+                example: "Not found"
+/logout:
+    get:
+      tags:
+      summary: "collect responses by experiences id to fill repartition chart"
+      description: "array of responses with an id"
+      parameters:
       responses:
         200:
           description: "Successful response"
