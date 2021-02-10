@@ -20,6 +20,15 @@ tags:
   description: 'list of questions from all the surveys'
 - name: 'Hospitals'
   description: 'informations about all the hospitals'
+- name: 'Score Confiance'
+  description: 'Chart about trust, in your hospital and competition'
+- name: 'Informations générales'
+  description: 'Chart about all the surveys, display with averages'
+- name: 'Repartition'
+  description: 'Chart about comments and ratings'
+- name: 'Ce mois-ci'
+  description: 'Part of the dashboard dedicated to ratings per month and records'
+
 paths:
   /hospitals:
     get:
@@ -39,7 +48,6 @@ paths:
                 properties:
                   placeholder:
                     type: string
-                    description: 
 
         500:
           description: "Error retrieving data"
@@ -48,7 +56,7 @@ paths:
               schema:
                 title: Hospitals not found
                 type: string
-                example: Not found
+                example: Not found    
   /responses:
     post:
       tags:
@@ -67,7 +75,6 @@ paths:
                 properties:
                   placeholder:
                     type: "string"
-                    description: 
 
         500:
           description: "Error saving a survey"
@@ -96,7 +103,6 @@ paths:
                 properties:
                   placeholder:
                     type: "string"
-                    description: 
 
         500:
           description: "Error retrieving datas"
@@ -124,7 +130,6 @@ paths:
                 properties:
                   placeholder:
                     type: "string"
-                    description: 
 
         500:
           description: "Error retrieving datas"
@@ -134,7 +139,7 @@ paths:
                 title: "Experiences not found"
                 type: "string"
                 example: "Not found"
-  /dashboard:
+  /dashboard/?:
     get:
       tags:
       - "Dashboard"
@@ -152,7 +157,6 @@ paths:
                 properties:
                   placeholder:
                     type: "string"
-                    description: 
 
         500:
           description: "Error retrieving datas"
@@ -180,7 +184,6 @@ paths:
                 properties:
                   placeholder:
                     type: "string"
-                    description: 
 
         500:
           description: "Error retrieving datas"
@@ -208,7 +211,6 @@ paths:
                 properties:
                   placeholder:
                     type: "string"
-                    description: 
 
         500:
           description: "Error retrieving datas"
@@ -222,6 +224,7 @@ paths:
     get:
       tags:
       - "Dashboard"
+      - "Informations générales"
       summary: "get responses chat based on dates, experiences & specialties"
       description: "array of responses and questions with an id"
       parameters:
@@ -236,7 +239,6 @@ paths:
                 properties:
                   placeholder:
                     type: "string"
-                    description: 
 
         500:
           description: "Error retrieving datas"
@@ -250,6 +252,7 @@ paths:
     get:
       tags:
       - "Dashboard"
+      - "Informations générales"
       summary: "get the number of reviews by hospitals and dates"
       description: "array of numbers by hospitals"
       parameters:
@@ -264,7 +267,6 @@ paths:
                 properties:
                   placeholder:
                     type: "string"
-                    description: 
 
         500:
           description: "Error retrieving datas"
@@ -292,7 +294,6 @@ paths:
                 properties:
                   placeholder:
                     type: "string"
-                    description: 
 
         500:
           description: "Server Error"
@@ -306,6 +307,7 @@ paths:
     get:
       tags:
       - "Dashboard"
+      - "Repartition"
       summary: "collect responses by experiences id to fill repartition chart"
       description: "array of responses with an id"
       parameters:
@@ -320,7 +322,6 @@ paths:
                 properties:
                   placeholder:
                     type: "string"
-                    description: 
 
         500:
           description: "Server Error"
@@ -348,7 +349,6 @@ paths:
                 properties:
                   placeholder:
                     type: "string"
-                    description: 
 
         500:
           description: "Server Error"
@@ -362,7 +362,7 @@ paths:
     get:
       tags:
       - "Users account"
-      summary: "collect responses by experiences id to fill repartition chart"
+      summary: "disconnect a user"
       description: "array of responses with an id"
       parameters:
       responses:
@@ -390,6 +390,7 @@ paths:
     get:
       tags:
       - "Dashboard"
+      - "Score Confiance"
       summary: "collect responses filtered with a few responses to fill Scoreconfiance chart"
       description: "array of responses with an id"
       parameters:
@@ -404,7 +405,6 @@ paths:
                 properties:
                   placeholder:
                     type: "string"
-                    description: 
 
         404:
           description: "Error retrieving datas"
@@ -414,10 +414,11 @@ paths:
                 title: "Informations not found"
                 type: "string"
                 example: "Not found"
-  /skillsCompetittion/?:
+  /skillsCompetition/?:
     get:
       tags:
       - "Dashboard"
+      - "Score Confiance"
       summary: "collect responses filtered with a few responses to fill Scoreconfiance chart"
       description: "array of responses with an id"
       parameters:
@@ -446,6 +447,7 @@ paths:
     get:
       tags:
       - "Dashboard"
+      - "Score Confiance"
       summary: "collect responses filtered with a few responses to fill Scoreconfiance chart"
       description: "array of responses with an id"
       parameters:
@@ -460,7 +462,6 @@ paths:
                 properties:
                   placeholder:
                     type: "string"
-                    description: 
 
         404:
           description: "Error retrieving datas"
@@ -474,6 +475,7 @@ paths:
     get:
       tags:
       - "Dashboard"
+      - "Score Confiance"
       summary: "collect responses filtered with a few responses to fill Scoreconfiance chart"
       description: "array of responses with an id"
       parameters:
@@ -488,7 +490,6 @@ paths:
                 properties:
                   placeholder:
                     type: "string"
-                    description: 
 
         404:
           description: "Error retrieving datas"
@@ -502,6 +503,7 @@ paths:
     get:
       tags:
       - "Dashboard"
+      - "Score Confiance"
       summary: "collect responses filtered with a few responses to fill Scoreconfiance chart"
       description: "array of responses with an id"
       parameters:
@@ -516,7 +518,6 @@ paths:
                 properties:
                   placeholder:
                     type: "string"
-                    description: 
 
         404:
           description: "Error retrieving datas"
@@ -530,6 +531,7 @@ paths:
     get:
       tags:
       - "Dashboard"
+      - "Score Confiance"
       summary: "collect responses filtered with a few responses to fill Scoreconfiance chart"
       description: "array of responses with an id"
       parameters:
@@ -544,7 +546,6 @@ paths:
                 properties:
                   placeholder:
                     type: "string"
-                    description: 
 
         404:
           description: "Error retrieving datas"
@@ -558,6 +559,7 @@ paths:
     get:
       tags:
       - "Dashboard"
+      - "Score Confiance"
       summary: "collect responses filtered with a few responses to fill Scoreconfiance chart"
       description: "array of responses with an id"
       parameters:
@@ -572,7 +574,6 @@ paths:
                 properties:
                   placeholder:
                     type: "string"
-                    description: 
 
         404:
           description: "Error retrieving datas"
@@ -586,6 +587,7 @@ paths:
     get:
       tags:
       - "Dashboard"
+      - "Score Confiance"
       summary: "collect responses filtered with a few responses to fill Scoreconfiance chart"
       description: "array of responses with an id"
       parameters:
@@ -600,7 +602,7 @@ paths:
                 properties:
                   placeholder:
                     type: "string"
-                    description: 
+
 
         404:
           description: "Error retrieving datas"
@@ -614,6 +616,7 @@ paths:
     get:
       tags:
       - "Dashboard"
+      - "Ce mois-ci"
       summary: "get responses about relations with employees"
       description: "array of responses with an id"
       parameters:
@@ -628,7 +631,6 @@ paths:
                 properties:
                   placeholder:
                     type: "string"
-                    description: 
 
         500:
           description: "Server Error"
@@ -642,6 +644,7 @@ paths:
     get:
       tags:
       - "Dashboard"
+      - "Ce mois-ci"
       summary: "get responses about employees"
       description: "array of responses with an id"
       parameters:
@@ -656,8 +659,6 @@ paths:
                 properties:
                   placeholder:
                     type: "string"
-                    description: 
-
         500:
           description: "Server Error"
           content:
@@ -670,6 +671,7 @@ paths:
     get:
       tags:
       - "Dashboard"
+      - "Ce mois-ci"
       summary: "get responses about employees"
       description: "array of responses with an id"
       parameters:
@@ -684,7 +686,6 @@ paths:
                 properties:
                   placeholder:
                     type: "string"
-                    description: 
 
         500:
           description: "Server Error"
@@ -698,6 +699,7 @@ paths:
     get:
       tags:
       - "Dashboard"
+      - "Ce mois-ci"
       summary: "get responses about informations during a visit"
       description: "array of responses with an id"
       parameters:
@@ -726,6 +728,7 @@ paths:
     get:
       tags:
       - "Dashboard"
+      - "Ce mois-ci"
       summary: "get responses about informations during a visit"
       description: "array of responses with an id"
       parameters:
@@ -754,6 +757,7 @@ paths:
     get:
       tags:
       - "Dashboard"
+      - "Ce mois-ci"
       summary: "get responses about the organisation during a visit"
       description: "array of responses with an id"
       parameters:
@@ -781,6 +785,7 @@ paths:
   /organisationPast/?:
     get:
       tags:
+      - "Ce mois-ci"
       - "Dashboard"
       summary: "get responses about the organisation during a visit"
       description: "array of responses with an id"
@@ -806,10 +811,11 @@ paths:
                 title: "Informations not found"
                 type: "string"
                 example: "Not found"
-  /averageHosptital/?:
+  /averageHospital/?:
     get:
       tags:
       - "Dashboard"
+      - "Informations générales"
       summary: "get an average of rating about all the Hospitals"
       description: "array of responses with an id"
       parameters:
@@ -838,6 +844,7 @@ paths:
     get:
       tags:
       - "Dashboard"
+      - "Score Confiance"
       summary: "collect responses filtered with a few responses to fill Scoreconfiance chart"
       description: "array of responses with an id"
       parameters:
@@ -866,6 +873,7 @@ paths:
     get:
       tags:
       - "Dashboard"
+      - "Score Confiance"
       summary: "collect responses filtered with a few responses to fill Scoreconfiance chart"
       description: "array of responses with an id"
       parameters:
