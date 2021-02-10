@@ -10,19 +10,21 @@ consumes:
 produces:
   - 'application/json'
 tags: 
-- name: 'hospitals'
-  description: 'list of hospitals'
-- name: 'responses'
+- name: 'Dashboard'
+  description: 'everything you need to display informations'
+- name: 'Responses'
   description: 'all the answers from surveys'
-- name: 'experiences'
-  description: 'all the experiences and their id'
-- name: 'questions'
+- name: 'Users account'
+  description: 'Everything a user needs to create and connect with a secured account'
+- name: 'Questions'
   description: 'list of questions from all the surveys'
+- name: 'Hospitals'
+  description: 'informations about all the hospitals'
 paths:
   /hospitals:
     get:
       tags:
-      - "hospitals"
+      - "Hospitals"
       summary: "list of all the hospitals"
       description: "array of name and id"
       parameters:
@@ -50,7 +52,7 @@ paths:
   /responses:
     post:
       tags:
-      - "responses"
+      - "Responses"
       summary: "get a survey defines with a list of questions depending of an experience, a specialty"
       description: "array of questions, id, text comments and ratings"
       parameters:
@@ -79,7 +81,7 @@ paths:
   /experiences:
     get:
       tags:
-      - "experiences"
+      - "Hospitals"
       summary: "get all the experiences"
       description: "array of objects with : name & id experiences"
       parameters:
@@ -107,7 +109,7 @@ paths:
   /questions:
     get:
       tags:
-      - "questions"
+      - "Questions"
       summary: "get all the questions from surveys"
       description: "array of objects with : questions in order by ids"
       parameters:
@@ -135,6 +137,7 @@ paths:
   /dashboard:
     get:
       tags:
+      - "Dashboard"
       summary: "get a dashboard with a correct hospital id"
       description: "dashboard correponding with an account hodpital id"
       parameters:
@@ -162,6 +165,7 @@ paths:
   /feedbacks:
     get:
       tags:
+      - "Dashboard"
       summary: "get feedbacks from surveys"
       description: "array of responses"
       parameters:
@@ -186,9 +190,10 @@ paths:
                 title: "Informations not found"
                 type: "string"
                 example: "Not found"
-  /feedbacks:
+  /feedbacks/?:
     post:
       tags:
+      - "Dashboard"
       summary: "get feedbacks from every questions"
       description: "array of responses"
       parameters:
@@ -216,6 +221,7 @@ paths:
   /informationsgenerales/?:
     get:
       tags:
+      - "Dashboard"
       summary: "get responses chat based on dates, experiences & specialties"
       description: "array of responses and questions with an id"
       parameters:
@@ -243,6 +249,7 @@ paths:
   /numberReview/?:
     get:
       tags:
+      - "Dashboard"
       summary: "get the number of reviews by hospitals and dates"
       description: "array of numbers by hospitals"
       parameters:
@@ -270,6 +277,7 @@ paths:
   /login:
     post:
       tags:
+      - "Users account"
       summary: "collect informations about a user"
       description: "array of informations"
       parameters:
@@ -297,6 +305,7 @@ paths:
   /repartition:
     get:
       tags:
+      - "Dashboard"
       summary: "collect responses by experiences id to fill repartition chart"
       description: "array of responses with an id"
       parameters:
@@ -324,6 +333,7 @@ paths:
   /login:
     get:
       tags:
+      - "Users account"
       summary: "collect responses by experiences id to fill repartition chart"
       description: "array of responses with an id"
       parameters:
@@ -351,6 +361,7 @@ paths:
   /logout:
     get:
       tags:
+      - "Users account"
       summary: "collect responses by experiences id to fill repartition chart"
       description: "array of responses with an id"
       parameters:
@@ -378,6 +389,7 @@ paths:
   /skills/?:
     get:
       tags:
+      - "Dashboard"
       summary: "collect responses filtered with a few responses to fill Scoreconfiance chart"
       description: "array of responses with an id"
       parameters:
@@ -394,8 +406,8 @@ paths:
                     type: "string"
                     description: 
 
-        500:
-          description: "Server Error"
+        404:
+          description: "Error retrieving datas"
           content:
             text/plain:
               schema:
@@ -405,6 +417,7 @@ paths:
   /skillsCompetittion/?:
     get:
       tags:
+      - "Dashboard"
       summary: "collect responses filtered with a few responses to fill Scoreconfiance chart"
       description: "array of responses with an id"
       parameters:
@@ -421,8 +434,8 @@ paths:
                     type: "string"
                     description: 
 
-        500:
-          description: "Server Error"
+        404:
+          description: "Error retrieving datas"
           content:
             text/plain:
               schema:
@@ -432,6 +445,7 @@ paths:
   /reliability/?:
     get:
       tags:
+      - "Dashboard"
       summary: "collect responses filtered with a few responses to fill Scoreconfiance chart"
       description: "array of responses with an id"
       parameters:
@@ -448,8 +462,8 @@ paths:
                     type: "string"
                     description: 
 
-        500:
-          description: "Server Error"
+        404:
+          description: "Error retrieving datas"
           content:
             text/plain:
               schema:
@@ -459,6 +473,7 @@ paths:
   /reliabiltyCompetition/?:
     get:
       tags:
+      - "Dashboard"
       summary: "collect responses filtered with a few responses to fill Scoreconfiance chart"
       description: "array of responses with an id"
       parameters:
@@ -475,8 +490,8 @@ paths:
                     type: "string"
                     description: 
 
-        500:
-          description: "Server Error"
+        404:
+          description: "Error retrieving datas"
           content:
             text/plain:
               schema:
@@ -486,6 +501,7 @@ paths:
   /transparency/?:
     get:
       tags:
+      - "Dashboard"
       summary: "collect responses filtered with a few responses to fill Scoreconfiance chart"
       description: "array of responses with an id"
       parameters:
@@ -502,8 +518,8 @@ paths:
                     type: "string"
                     description: 
 
-        500:
-          description: "Server Error"
+        404:
+          description: "Error retrieving datas"
           content:
             text/plain:
               schema:
@@ -513,6 +529,7 @@ paths:
   /transparencyCompetition/?:
     get:
       tags:
+      - "Dashboard"
       summary: "collect responses filtered with a few responses to fill Scoreconfiance chart"
       description: "array of responses with an id"
       parameters:
@@ -529,8 +546,8 @@ paths:
                     type: "string"
                     description: 
 
-        500:
-          description: "Server Error"
+        404:
+          description: "Error retrieving datas"
           content:
             text/plain:
               schema:
@@ -540,6 +557,7 @@ paths:
   /relation/?:
     get:
       tags:
+      - "Dashboard"
       summary: "collect responses filtered with a few responses to fill Scoreconfiance chart"
       description: "array of responses with an id"
       parameters:
@@ -556,8 +574,8 @@ paths:
                     type: "string"
                     description: 
 
-        500:
-          description: "Server Error"
+        404:
+          description: "Error retrieving datas"
           content:
             text/plain:
               schema:
@@ -567,6 +585,7 @@ paths:
   /relationCompetition/?:
     get:
       tags:
+      - "Dashboard"
       summary: "collect responses filtered with a few responses to fill Scoreconfiance chart"
       description: "array of responses with an id"
       parameters:
@@ -583,8 +602,8 @@ paths:
                     type: "string"
                     description: 
 
-        500:
-          description: "Server Error"
+        404:
+          description: "Error retrieving datas"
           content:
             text/plain:
               schema:
@@ -594,6 +613,7 @@ paths:
   /doctorsRelation/?:
     get:
       tags:
+      - "Dashboard"
       summary: "get responses about relations with employees"
       description: "array of responses with an id"
       parameters:
@@ -621,6 +641,7 @@ paths:
   /healthTeam/?:
     get:
       tags:
+      - "Dashboard"
       summary: "get responses about employees"
       description: "array of responses with an id"
       parameters:
@@ -648,6 +669,7 @@ paths:
   /healthTeamPast/?:
     get:
       tags:
+      - "Dashboard"
       summary: "get responses about employees"
       description: "array of responses with an id"
       parameters:
@@ -675,6 +697,7 @@ paths:
   /explanationInformation/?:
     get:
       tags:
+      - "Dashboard"
       summary: "get responses about informations during a visit"
       description: "array of responses with an id"
       parameters:
@@ -702,6 +725,7 @@ paths:
   /explanationInformationPast/?:
     get:
       tags:
+      - "Dashboard"
       summary: "get responses about informations during a visit"
       description: "array of responses with an id"
       parameters:
@@ -729,6 +753,7 @@ paths:
   /organisation/?:
     get:
       tags:
+      - "Dashboard"
       summary: "get responses about the organisation during a visit"
       description: "array of responses with an id"
       parameters:
@@ -756,6 +781,7 @@ paths:
   /organisationPast/?:
     get:
       tags:
+      - "Dashboard"
       summary: "get responses about the organisation during a visit"
       description: "array of responses with an id"
       parameters:
@@ -783,6 +809,7 @@ paths:
   /averageHosptital/?:
     get:
       tags:
+      - "Dashboard"
       summary: "get an average of rating about all the Hospitals"
       description: "array of responses with an id"
       parameters:
@@ -810,6 +837,7 @@ paths:
   /RelationCompetition/?:
     get:
       tags:
+      - "Dashboard"
       summary: "collect responses filtered with a few responses to fill Scoreconfiance chart"
       description: "array of responses with an id"
       parameters:
@@ -837,6 +865,7 @@ paths:
   /RelationCompetition/?:
     get:
       tags:
+      - "Dashboard"
       summary: "collect responses filtered with a few responses to fill Scoreconfiance chart"
       description: "array of responses with an id"
       parameters:
@@ -861,4 +890,89 @@ paths:
                 title: "Informations not found"
                 type: "string"
                 example: "Not found"
+  /register/?:
+    get:
+      tags:
+      - "Users account"
+      summary: "get users informations"
+      description: "array of responses with an id"
+      parameters:
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "Sample"
+                type: "object"
+                properties:
+                  placeholder:
+                    type: "string"
+                    description: 
+
+        500:
+          description: "Server Error"
+          content:
+            text/plain:
+              schema:
+                title: "Informations not found"
+                type: "string"
+                example: "Not found"
+  /register:
+    post:
+      tags:
+      - "Users account"
+      summary: "validation of a user"
+      description: "array of responses with an id"
+      parameters:
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "Sample"
+                type: "object"
+                properties:
+                  placeholder:
+                    type: "string"
+                    description: 
+
+        500:
+          description: "Server Error"
+          content:
+            text/plain:
+              schema:
+                title: "Informations not found"
+                type: "string"
+                example: "Not found"
+  /specialties:
+    post:
+      tags:
+      - "Hospitals"
+      summary: "get all the specialties a patient can visit"
+      description: "array of responses with an id"
+      parameters:
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "Sample"
+                type: "object"
+                properties:
+                  placeholder:
+                    type: "string"
+                    description: 
+
+        500:
+          description: "Server Error"
+          content:
+            text/plain:
+              schema:
+                title: "Informations not found"
+                type: "string"
+                example: "Not found"
+    
   
