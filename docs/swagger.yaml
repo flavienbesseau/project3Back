@@ -321,7 +321,7 @@ paths:
                 title: "Informations not found"
                 type: "string"
                 example: "Not found"
-/repartition:
+  /login:
     get:
       tags:
       summary: "collect responses by experiences id to fill repartition chart"
@@ -348,7 +348,7 @@ paths:
                 title: "Informations not found"
                 type: "string"
                 example: "Not found"
-/logout:
+  /logout:
     get:
       tags:
       summary: "collect responses by experiences id to fill repartition chart"
@@ -375,3 +375,490 @@ paths:
                 title: "Informations not found"
                 type: "string"
                 example: "Not found"
+  /skills/?:
+    get:
+      tags:
+      summary: "collect responses filtered with a few responses to fill Scoreconfiance chart"
+      description: "array of responses with an id"
+      parameters:
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "Sample"
+                type: "object"
+                properties:
+                  placeholder:
+                    type: "string"
+                    description: 
+
+        500:
+          description: "Server Error"
+          content:
+            text/plain:
+              schema:
+                title: "Informations not found"
+                type: "string"
+                example: "Not found"
+  /skillsCompetittion/?:
+    get:
+      tags:
+      summary: "collect responses filtered with a few responses to fill Scoreconfiance chart"
+      description: "array of responses with an id"
+      parameters:
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "Sample"
+                type: "object"
+                properties:
+                  placeholder:
+                    type: "string"
+                    description: 
+
+        500:
+          description: "Server Error"
+          content:
+            text/plain:
+              schema:
+                title: "Informations not found"
+                type: "string"
+                example: "Not found"
+  /reliability/?:
+    get:
+      tags:
+      summary: "collect responses filtered with a few responses to fill Scoreconfiance chart"
+      description: "array of responses with an id"
+      parameters:
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "Sample"
+                type: "object"
+                properties:
+                  placeholder:
+                    type: "string"
+                    description: 
+
+        500:
+          description: "Server Error"
+          content:
+            text/plain:
+              schema:
+                title: "Informations not found"
+                type: "string"
+                example: "Not found"
+  /reliabiltyCompetition/?:
+    get:
+      tags:
+      summary: "collect responses filtered with a few responses to fill Scoreconfiance chart"
+      description: "array of responses with an id"
+      parameters:
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "Sample"
+                type: "object"
+                properties:
+                  placeholder:
+                    type: "string"
+                    description: 
+
+        500:
+          description: "Server Error"
+          content:
+            text/plain:
+              schema:
+                title: "Informations not found"
+                type: "string"
+                example: "Not found"
+  /transparency/?:
+    get:
+      tags:
+      summary: "collect responses filtered with a few responses to fill Scoreconfiance chart"
+      description: "array of responses with an id"
+      parameters:
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "Sample"
+                type: "object"
+                properties:
+                  placeholder:
+                    type: "string"
+                    description: 
+
+        500:
+          description: "Server Error"
+          content:
+            text/plain:
+              schema:
+                title: "Informations not found"
+                type: "string"
+                example: "Not found"
+  /transparencyCompetition/?:
+    get:
+      tags:
+      summary: "collect responses filtered with a few responses to fill Scoreconfiance chart"
+      description: "array of responses with an id"
+      parameters:
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "Sample"
+                type: "object"
+                properties:
+                  placeholder:
+                    type: "string"
+                    description: 
+
+        500:
+          description: "Server Error"
+          content:
+            text/plain:
+              schema:
+                title: "Informations not found"
+                type: "string"
+                example: "Not found"
+  /relation/?:
+    get:
+      tags:
+      summary: "collect responses filtered with a few responses to fill Scoreconfiance chart"
+      description: "array of responses with an id"
+      parameters:
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "Sample"
+                type: "object"
+                properties:
+                  placeholder:
+                    type: "string"
+                    description: 
+
+        500:
+          description: "Server Error"
+          content:
+            text/plain:
+              schema:
+                title: "Informations not found"
+                type: "string"
+                example: "Not found"
+  /relationCompetition/?:
+    get:
+      tags:
+      summary: "collect responses filtered with a few responses to fill Scoreconfiance chart"
+      description: "array of responses with an id"
+      parameters:
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "Sample"
+                type: "object"
+                properties:
+                  placeholder:
+                    type: "string"
+                    description: 
+
+        500:
+          description: "Server Error"
+          content:
+            text/plain:
+              schema:
+                title: "Informations not found"
+                type: "string"
+                example: "Not found"
+  /doctorsRelation/?:
+    get:
+      tags:
+      summary: "get responses about relations with employees"
+      description: "array of responses with an id"
+      parameters:
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "Sample"
+                type: "object"
+                properties:
+                  placeholder:
+                    type: "string"
+                    description: 
+
+        500:
+          description: "Server Error"
+          content:
+            text/plain:
+              schema:
+                title: "Informations not found"
+                type: "string"
+                example: "Not found"
+  /healthTeam/?:
+    get:
+      tags:
+      summary: "get responses about employees"
+      description: "array of responses with an id"
+      parameters:
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "Sample"
+                type: "object"
+                properties:
+                  placeholder:
+                    type: "string"
+                    description: 
+
+        500:
+          description: "Server Error"
+          content:
+            text/plain:
+              schema:
+                title: "Informations not found"
+                type: "string"
+                example: "Not found"
+  /healthTeamPast/?:
+    get:
+      tags:
+      summary: "get responses about employees"
+      description: "array of responses with an id"
+      parameters:
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "Sample"
+                type: "object"
+                properties:
+                  placeholder:
+                    type: "string"
+                    description: 
+
+        500:
+          description: "Server Error"
+          content:
+            text/plain:
+              schema:
+                title: "Informations not found"
+                type: "string"
+                example: "Not found"
+  /explanationInformation/?:
+    get:
+      tags:
+      summary: "get responses about informations during a visit"
+      description: "array of responses with an id"
+      parameters:
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "Sample"
+                type: "object"
+                properties:
+                  placeholder:
+                    type: "string"
+                    description: 
+
+        500:
+          description: "Server Error"
+          content:
+            text/plain:
+              schema:
+                title: "Informations not found"
+                type: "string"
+                example: "Not found"
+  /explanationInformationPast/?:
+    get:
+      tags:
+      summary: "get responses about informations during a visit"
+      description: "array of responses with an id"
+      parameters:
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "Sample"
+                type: "object"
+                properties:
+                  placeholder:
+                    type: "string"
+                    description: 
+
+        500:
+          description: "Server Error"
+          content:
+            text/plain:
+              schema:
+                title: "Informations not found"
+                type: "string"
+                example: "Not found"
+  /organisation/?:
+    get:
+      tags:
+      summary: "get responses about the organisation during a visit"
+      description: "array of responses with an id"
+      parameters:
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "Sample"
+                type: "object"
+                properties:
+                  placeholder:
+                    type: "string"
+                    description: 
+
+        500:
+          description: "Server Error"
+          content:
+            text/plain:
+              schema:
+                title: "Informations not found"
+                type: "string"
+                example: "Not found"
+  /organisationPast/?:
+    get:
+      tags:
+      summary: "get responses about the organisation during a visit"
+      description: "array of responses with an id"
+      parameters:
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "Sample"
+                type: "object"
+                properties:
+                  placeholder:
+                    type: "string"
+                    description: 
+
+        500:
+          description: "Server Error"
+          content:
+            text/plain:
+              schema:
+                title: "Informations not found"
+                type: "string"
+                example: "Not found"
+  /averageHosptital/?:
+    get:
+      tags:
+      summary: "get an average of rating about all the Hospitals"
+      description: "array of responses with an id"
+      parameters:
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "Sample"
+                type: "object"
+                properties:
+                  placeholder:
+                    type: "string"
+                    description: 
+
+        500:
+          description: "Server Error"
+          content:
+            text/plain:
+              schema:
+                title: "Informations not found"
+                type: "string"
+                example: "Not found"
+  /RelationCompetition/?:
+    get:
+      tags:
+      summary: "collect responses filtered with a few responses to fill Scoreconfiance chart"
+      description: "array of responses with an id"
+      parameters:
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "Sample"
+                type: "object"
+                properties:
+                  placeholder:
+                    type: "string"
+                    description: 
+
+        500:
+          description: "Server Error"
+          content:
+            text/plain:
+              schema:
+                title: "Informations not found"
+                type: "string"
+                example: "Not found"
+  /RelationCompetition/?:
+    get:
+      tags:
+      summary: "collect responses filtered with a few responses to fill Scoreconfiance chart"
+      description: "array of responses with an id"
+      parameters:
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "Sample"
+                type: "object"
+                properties:
+                  placeholder:
+                    type: "string"
+                    description: 
+
+        500:
+          description: "Server Error"
+          content:
+            text/plain:
+              schema:
+                title: "Informations not found"
+                type: "string"
+                example: "Not found"
+  
