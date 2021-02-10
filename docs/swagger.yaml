@@ -302,7 +302,7 @@ paths:
                 title: "Informations not found"
                 type: "string"
                 example: "Not found"
-  /repartition:
+  /repartition/?:
     get:
       tags:
       - "Dashboard"
@@ -331,10 +331,10 @@ paths:
                 type: "string"
                 example: "Not found"
   /login:
-    get:
+    post:
       tags:
       - "Users account"
-      summary: "collect responses by experiences id to fill repartition chart"
+      summary: "post the users informations"
       description: "array of responses with an id"
       parameters:
       responses:
