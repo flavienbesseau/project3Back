@@ -1,30 +1,1016 @@
 swagger: '2.0'
 info:
   version: '1.0.0'
-  title: 'P3 API'
-  description: 'Simple API to manage things'
+  title: 'hospitalidee'
+  description: 'API server for graphic statistics & patient comments about an hospital'
 host: 'localhost:5000'
 basePath: '/'
 consumes:
   - 'application/json'
 produces:
   - 'application/json'
+tags: 
+- name: 'Dashboard'
+  description: 'everything you need to display informations'
+- name: 'Responses'
+  description: 'all the answers from surveys'
+- name: 'Users account'
+  description: 'Everything a user needs to create and connect with a secured account'
+- name: 'Questions'
+  description: 'list of questions from all the surveys'
+- name: 'Hospitals'
+  description: 'informations about all the hospitals'
+- name: 'Score Confiance'
+  description: 'Chart about trust, in your hospital and competition'
+- name: 'Informations générales'
+  description: 'Chart about all the surveys, display with averages'
+- name: 'Repartition'
+  description: 'Chart about comments and ratings'
+- name: 'Ce mois-ci'
+  description: 'Part of the dashboard dedicated to ratings per month and records'
+
 paths:
-  /things:
+  /hospitals:
     get:
-      summary: 'Get a list of things'
+      tags:
+      - "Hospitals"
+      summary: "list of all the hospitals"
+      description: "array of name and id"
+      parameters:
       responses:
-        '200':
-          description: 'Everything went well'
-          schema:
-            type: 'array'
-            items:
-              $ref: '#/definitions/Thing'
-definitions:
-  Thing:
-    properties:
-      id:
-        type: 'integer'
-        format: 'int64'
-      name:
-        type: 'string'
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: Sample
+                type: object
+                properties:
+                  placeholder:
+                    type: string
+
+        500:
+          description: "Error retrieving data"
+          content:
+            text/plain:
+              schema:
+                title: Hospitals not found
+                type: string
+                example: Not found    
+  /responses:
+    post:
+      tags:
+      - "Responses"
+      summary: "get a survey defines with a list of questions depending of an experience, a specialty"
+      description: "array of questions, id, text comments and ratings"
+      parameters:
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "Sample"
+                type: "object"
+                properties:
+                  placeholder:
+                    type: "string"
+
+        500:
+          description: "Error saving a survey"
+          content:
+            text/plain:
+              schema:
+                title: "Survey not found"
+                type: "string"
+                example: "Not found"
+
+  /experiences:
+    get:
+      tags:
+      - "Hospitals"
+      summary: "get all the experiences"
+      description: "array of objects with : name & id experiences"
+      parameters:
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "Sample"
+                type: "object"
+                properties:
+                  placeholder:
+                    type: "string"
+
+        500:
+          description: "Error retrieving datas"
+          content:
+            text/plain:
+              schema:
+                title: "Experiences not found"
+                type: "string"
+                example: "Not found"
+  /questions:
+    get:
+      tags:
+      - "Questions"
+      summary: "get all the questions from surveys"
+      description: "array of objects with : questions in order by ids"
+      parameters:
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "Sample"
+                type: "object"
+                properties:
+                  placeholder:
+                    type: "string"
+
+        500:
+          description: "Error retrieving datas"
+          content:
+            text/plain:
+              schema:
+                title: "Experiences not found"
+                type: "string"
+                example: "Not found"
+  /dashboard/?:
+    get:
+      tags:
+      - "Dashboard"
+      summary: "get a dashboard with a correct hospital id"
+      description: "dashboard correponding with an account hodpital id"
+      parameters:
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "Sample"
+                type: "object"
+                properties:
+                  placeholder:
+                    type: "string"
+
+        500:
+          description: "Error retrieving datas"
+          content:
+            text/plain:
+              schema:
+                title: "Dashboard not found"
+                type: "string"
+                example: "Not found"
+  /feedbacks:
+    get:
+      tags:
+      - "Dashboard"
+      summary: "get feedbacks from surveys"
+      description: "array of responses"
+      parameters:
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "Sample"
+                type: "object"
+                properties:
+                  placeholder:
+                    type: "string"
+
+        500:
+          description: "Error retrieving datas"
+          content:
+            text/plain:
+              schema:
+                title: "Informations not found"
+                type: "string"
+                example: "Not found"
+  /feedbacks/?:
+    post:
+      tags:
+      - "Dashboard"
+      summary: "get feedbacks from every questions"
+      description: "array of responses"
+      parameters:
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "Sample"
+                type: "object"
+                properties:
+                  placeholder:
+                    type: "string"
+
+        500:
+          description: "Error retrieving datas"
+          content:
+            text/plain:
+              schema:
+                title: "Informations not found"
+                type: "string"
+                example: "Not found"
+  /informationsgenerales/?:
+    get:
+      tags:
+      - "Dashboard"
+      - "Informations générales"
+      summary: "get responses chat based on dates, experiences & specialties"
+      description: "array of responses and questions with an id"
+      parameters:
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "Sample"
+                type: "object"
+                properties:
+                  placeholder:
+                    type: "string"
+
+        500:
+          description: "Error retrieving datas"
+          content:
+            text/plain:
+              schema:
+                title: "Informations not found"
+                type: "string"
+                example: "Not found"
+  /numberReview/?:
+    get:
+      tags:
+      - "Dashboard"
+      - "Informations générales"
+      summary: "get the number of reviews by hospitals and dates"
+      description: "array of numbers by hospitals"
+      parameters:
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "Sample"
+                type: "object"
+                properties:
+                  placeholder:
+                    type: "string"
+
+        500:
+          description: "Error retrieving datas"
+          content:
+            text/plain:
+              schema:
+                title: "Informations not found"
+                type: "string"
+                example: "Not found"
+  /login:
+    post:
+      tags:
+      - "Users account"
+      summary: "collect informations about a user"
+      description: "array of informations"
+      parameters:
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "Sample"
+                type: "object"
+                properties:
+                  placeholder:
+                    type: "string"
+
+        500:
+          description: "Server Error"
+          content:
+            text/plain:
+              schema:
+                title: "Informations not found"
+                type: "string"
+                example: "Not found"
+  /repartition/?:
+    get:
+      tags:
+      - "Dashboard"
+      - "Repartition"
+      summary: "collect responses by experiences id to fill repartition chart"
+      description: "array of responses with an id"
+      parameters:
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "Sample"
+                type: "object"
+                properties:
+                  placeholder:
+                    type: "string"
+
+        500:
+          description: "Server Error"
+          content:
+            text/plain:
+              schema:
+                title: "Informations not found"
+                type: "string"
+                example: "Not found"
+  /login:
+    post:
+      tags:
+      - "Users account"
+      summary: "post the users informations"
+      description: "array of responses with an id"
+      parameters:
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "Sample"
+                type: "object"
+                properties:
+                  placeholder:
+                    type: "string"
+
+        500:
+          description: "Server Error"
+          content:
+            text/plain:
+              schema:
+                title: "Informations not found"
+                type: "string"
+                example: "Not found"
+  /logout:
+    get:
+      tags:
+      - "Users account"
+      summary: "disconnect a user"
+      description: "array of responses with an id"
+      parameters:
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "Sample"
+                type: "object"
+                properties:
+                  placeholder:
+                    type: "string"
+                    description: 
+
+        500:
+          description: "Server Error"
+          content:
+            text/plain:
+              schema:
+                title: "Informations not found"
+                type: "string"
+                example: "Not found"
+  /skills/?:
+    get:
+      tags:
+      - "Dashboard"
+      - "Score Confiance"
+      summary: "collect responses filtered with a few responses to fill Scoreconfiance chart"
+      description: "array of responses with an id"
+      parameters:
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "Sample"
+                type: "object"
+                properties:
+                  placeholder:
+                    type: "string"
+
+        404:
+          description: "Error retrieving datas"
+          content:
+            text/plain:
+              schema:
+                title: "Informations not found"
+                type: "string"
+                example: "Not found"
+  /skillsCompetition/?:
+    get:
+      tags:
+      - "Dashboard"
+      - "Score Confiance"
+      summary: "collect responses filtered with a few responses to fill Scoreconfiance chart"
+      description: "array of responses with an id"
+      parameters:
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "Sample"
+                type: "object"
+                properties:
+                  placeholder:
+                    type: "string"
+                    description: 
+
+        404:
+          description: "Error retrieving datas"
+          content:
+            text/plain:
+              schema:
+                title: "Informations not found"
+                type: "string"
+                example: "Not found"
+  /reliability/?:
+    get:
+      tags:
+      - "Dashboard"
+      - "Score Confiance"
+      summary: "collect responses filtered with a few responses to fill Scoreconfiance chart"
+      description: "array of responses with an id"
+      parameters:
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "Sample"
+                type: "object"
+                properties:
+                  placeholder:
+                    type: "string"
+
+        404:
+          description: "Error retrieving datas"
+          content:
+            text/plain:
+              schema:
+                title: "Informations not found"
+                type: "string"
+                example: "Not found"
+  /reliabiltyCompetition/?:
+    get:
+      tags:
+      - "Dashboard"
+      - "Score Confiance"
+      summary: "collect responses filtered with a few responses to fill Scoreconfiance chart"
+      description: "array of responses with an id"
+      parameters:
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "Sample"
+                type: "object"
+                properties:
+                  placeholder:
+                    type: "string"
+
+        404:
+          description: "Error retrieving datas"
+          content:
+            text/plain:
+              schema:
+                title: "Informations not found"
+                type: "string"
+                example: "Not found"
+  /transparency/?:
+    get:
+      tags:
+      - "Dashboard"
+      - "Score Confiance"
+      summary: "collect responses filtered with a few responses to fill Scoreconfiance chart"
+      description: "array of responses with an id"
+      parameters:
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "Sample"
+                type: "object"
+                properties:
+                  placeholder:
+                    type: "string"
+
+        404:
+          description: "Error retrieving datas"
+          content:
+            text/plain:
+              schema:
+                title: "Informations not found"
+                type: "string"
+                example: "Not found"
+  /transparencyCompetition/?:
+    get:
+      tags:
+      - "Dashboard"
+      - "Score Confiance"
+      summary: "collect responses filtered with a few responses to fill Scoreconfiance chart"
+      description: "array of responses with an id"
+      parameters:
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "Sample"
+                type: "object"
+                properties:
+                  placeholder:
+                    type: "string"
+
+        404:
+          description: "Error retrieving datas"
+          content:
+            text/plain:
+              schema:
+                title: "Informations not found"
+                type: "string"
+                example: "Not found"
+  /relation/?:
+    get:
+      tags:
+      - "Dashboard"
+      - "Score Confiance"
+      summary: "collect responses filtered with a few responses to fill Scoreconfiance chart"
+      description: "array of responses with an id"
+      parameters:
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "Sample"
+                type: "object"
+                properties:
+                  placeholder:
+                    type: "string"
+
+        404:
+          description: "Error retrieving datas"
+          content:
+            text/plain:
+              schema:
+                title: "Informations not found"
+                type: "string"
+                example: "Not found"
+  /relationCompetition/?:
+    get:
+      tags:
+      - "Dashboard"
+      - "Score Confiance"
+      summary: "collect responses filtered with a few responses to fill Scoreconfiance chart"
+      description: "array of responses with an id"
+      parameters:
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "Sample"
+                type: "object"
+                properties:
+                  placeholder:
+                    type: "string"
+
+
+        404:
+          description: "Error retrieving datas"
+          content:
+            text/plain:
+              schema:
+                title: "Informations not found"
+                type: "string"
+                example: "Not found"
+  /doctorsRelation/?:
+    get:
+      tags:
+      - "Dashboard"
+      - "Ce mois-ci"
+      summary: "get responses about relations with employees"
+      description: "array of responses with an id"
+      parameters:
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "Sample"
+                type: "object"
+                properties:
+                  placeholder:
+                    type: "string"
+
+        500:
+          description: "Server Error"
+          content:
+            text/plain:
+              schema:
+                title: "Informations not found"
+                type: "string"
+                example: "Not found"
+  /healthTeam/?:
+    get:
+      tags:
+      - "Dashboard"
+      - "Ce mois-ci"
+      summary: "get responses about employees"
+      description: "array of responses with an id"
+      parameters:
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "Sample"
+                type: "object"
+                properties:
+                  placeholder:
+                    type: "string"
+        500:
+          description: "Server Error"
+          content:
+            text/plain:
+              schema:
+                title: "Informations not found"
+                type: "string"
+                example: "Not found"
+  /healthTeamPast/?:
+    get:
+      tags:
+      - "Dashboard"
+      - "Ce mois-ci"
+      summary: "get responses about employees"
+      description: "array of responses with an id"
+      parameters:
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "Sample"
+                type: "object"
+                properties:
+                  placeholder:
+                    type: "string"
+
+        500:
+          description: "Server Error"
+          content:
+            text/plain:
+              schema:
+                title: "Informations not found"
+                type: "string"
+                example: "Not found"
+  /explanationInformation/?:
+    get:
+      tags:
+      - "Dashboard"
+      - "Ce mois-ci"
+      summary: "get responses about informations during a visit"
+      description: "array of responses with an id"
+      parameters:
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "Sample"
+                type: "object"
+                properties:
+                  placeholder:
+                    type: "string"
+                    description: 
+
+        500:
+          description: "Server Error"
+          content:
+            text/plain:
+              schema:
+                title: "Informations not found"
+                type: "string"
+                example: "Not found"
+  /explanationInformationPast/?:
+    get:
+      tags:
+      - "Dashboard"
+      - "Ce mois-ci"
+      summary: "get responses about informations during a visit"
+      description: "array of responses with an id"
+      parameters:
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "Sample"
+                type: "object"
+                properties:
+                  placeholder:
+                    type: "string"
+                    description: 
+
+        500:
+          description: "Server Error"
+          content:
+            text/plain:
+              schema:
+                title: "Informations not found"
+                type: "string"
+                example: "Not found"
+  /organisation/?:
+    get:
+      tags:
+      - "Dashboard"
+      - "Ce mois-ci"
+      summary: "get responses about the organisation during a visit"
+      description: "array of responses with an id"
+      parameters:
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "Sample"
+                type: "object"
+                properties:
+                  placeholder:
+                    type: "string"
+                    description: 
+
+        500:
+          description: "Server Error"
+          content:
+            text/plain:
+              schema:
+                title: "Informations not found"
+                type: "string"
+                example: "Not found"
+  /organisationPast/?:
+    get:
+      tags:
+      - "Ce mois-ci"
+      - "Dashboard"
+      summary: "get responses about the organisation during a visit"
+      description: "array of responses with an id"
+      parameters:
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "Sample"
+                type: "object"
+                properties:
+                  placeholder:
+                    type: "string"
+                    description: 
+
+        500:
+          description: "Server Error"
+          content:
+            text/plain:
+              schema:
+                title: "Informations not found"
+                type: "string"
+                example: "Not found"
+  /averageHospital/?:
+    get:
+      tags:
+      - "Dashboard"
+      - "Informations générales"
+      summary: "get an average of rating about all the Hospitals"
+      description: "array of responses with an id"
+      parameters:
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "Sample"
+                type: "object"
+                properties:
+                  placeholder:
+                    type: "string"
+                    description: 
+
+        500:
+          description: "Server Error"
+          content:
+            text/plain:
+              schema:
+                title: "Informations not found"
+                type: "string"
+                example: "Not found"
+  /RelationCompetition/?:
+    get:
+      tags:
+      - "Dashboard"
+      - "Score Confiance"
+      summary: "collect responses filtered with a few responses to fill Scoreconfiance chart"
+      description: "array of responses with an id"
+      parameters:
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "Sample"
+                type: "object"
+                properties:
+                  placeholder:
+                    type: "string"
+                    description: 
+
+        500:
+          description: "Server Error"
+          content:
+            text/plain:
+              schema:
+                title: "Informations not found"
+                type: "string"
+                example: "Not found"
+  /RelationCompetition/?:
+    get:
+      tags:
+      - "Dashboard"
+      - "Score Confiance"
+      summary: "collect responses filtered with a few responses to fill Scoreconfiance chart"
+      description: "array of responses with an id"
+      parameters:
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "Sample"
+                type: "object"
+                properties:
+                  placeholder:
+                    type: "string"
+                    description: 
+
+        500:
+          description: "Server Error"
+          content:
+            text/plain:
+              schema:
+                title: "Informations not found"
+                type: "string"
+                example: "Not found"
+  /register/?:
+    get:
+      tags:
+      - "Users account"
+      summary: "get users informations"
+      description: "array of responses with an id"
+      parameters:
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "Sample"
+                type: "object"
+                properties:
+                  placeholder:
+                    type: "string"
+                    description: 
+
+        500:
+          description: "Server Error"
+          content:
+            text/plain:
+              schema:
+                title: "Informations not found"
+                type: "string"
+                example: "Not found"
+  /register:
+    post:
+      tags:
+      - "Users account"
+      summary: "validation of a user"
+      description: "array of responses with an id"
+      parameters:
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "Sample"
+                type: "object"
+                properties:
+                  placeholder:
+                    type: "string"
+                    description: 
+
+        500:
+          description: "Server Error"
+          content:
+            text/plain:
+              schema:
+                title: "Informations not found"
+                type: "string"
+                example: "Not found"
+  /specialties:
+    post:
+      tags:
+      - "Hospitals"
+      summary: "get all the specialties a patient can visit"
+      description: "array of responses with an id"
+      parameters:
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "Sample"
+                type: "object"
+                properties:
+                  placeholder:
+                    type: "string"
+                    description: 
+
+        500:
+          description: "Server Error"
+          content:
+            text/plain:
+              schema:
+                title: "Informations not found"
+                type: "string"
+                example: "Not found"
+  /survey:
+    post:
+      tags:
+      - "Questions"
+      - "Responses"
+      summary: "All the questions with a question order composed by a rating and a comment"
+      description: "array of responses with an id"
+      parameters:
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "Sample"
+                type: "object"
+                properties:
+                  placeholder:
+                    type: "string"
+                    description: 
+
+        500:
+          description: "Server Error"
+          content:
+            text/plain:
+              schema:
+                title: "Informations not found"
+                type: "string"
+                example: "Not found"
+ 
+    
+  
