@@ -982,5 +982,35 @@ paths:
                 title: "Informations not found"
                 type: "string"
                 example: "Not found"
+  /survey:
+    post:
+      tags:
+      - "Questions"
+      - "Responses"
+      summary: "All the questions with a question order composed by a rating and a comment"
+      description: "array of responses with an id"
+      parameters:
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "Sample"
+                type: "object"
+                properties:
+                  placeholder:
+                    type: "string"
+                    description: 
+
+        500:
+          description: "Server Error"
+          content:
+            text/plain:
+              schema:
+                title: "Informations not found"
+                type: "string"
+                example: "Not found"
+ 
     
   
