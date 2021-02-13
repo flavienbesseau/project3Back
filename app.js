@@ -32,14 +32,6 @@ app.get("/", (req, res) => {
 // routes
 app.use("/api", api);
 
-connection.connection.on('error', (err) => {
-  console.error('error when connecting to db:', err);
-  if(err.code === 'PROTOCOL_CONNECTION_LOST') {
-    connection.init();
-    console.log('reconnected')
-  }
-})
-
 connection.pool.on('error', (err) => {
   console.error('error when connecting to db:', err);
   if(err.code === 'PROTOCOL_CONNECTION_LOST') {
