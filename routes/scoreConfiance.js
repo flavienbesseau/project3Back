@@ -1,11 +1,11 @@
 const express = require("express");
 
 const router = express.Router();
-const {connection} = require("../db");
+const {pool} = require("../db");
 
 router.get("/skills/:hospitalId", (req, res) => {
   const { hospitalId } = req.params;
-  connection.query(
+  pool.query(
     `SELECT AVG(score) AS score FROM ms_response AS r WHERE r.fk_question_id IN (1,6,12,8) AND r.fk_hospital_id = ?`,
     [hospitalId],
     (err, results) => {
@@ -20,7 +20,7 @@ router.get("/skills/:hospitalId", (req, res) => {
 
 router.get("/Competitionskills/:hospitalId", (req, res) => {
   const { hospitalId } = req.params;
-  connection.query(
+  pool.query(
     `SELECT AVG(score) AS score FROM ms_response AS r WHERE r.fk_question_id IN (1,6,12,8) AND r.fk_hospital_id != ?`,
     [hospitalId],
     (err, results) => {
@@ -35,7 +35,7 @@ router.get("/Competitionskills/:hospitalId", (req, res) => {
 
 router.get("/reliability/:hospitalId", (req, res) => {
   const { hospitalId } = req.params;
-  connection.query(
+  pool.query(
     `SELECT AVG(score) AS score FROM ms_response AS r WHERE r.fk_question_id IN (9,16,28,29,30,31) AND r.fk_hospital_id = ?`,
     [hospitalId],
     (err, results) => {
@@ -50,7 +50,7 @@ router.get("/reliability/:hospitalId", (req, res) => {
 
 router.get("/Competitionreliability/:hospitalId", (req, res) => {
   const { hospitalId } = req.params;
-  connection.query(
+  pool.query(
     `SELECT AVG(score) AS score FROM ms_response AS r WHERE r.fk_question_id IN (9,16,28,29,30,31) AND r.fk_hospital_id != ?`,
     [hospitalId],
     (err, results) => {
@@ -65,7 +65,7 @@ router.get("/Competitionreliability/:hospitalId", (req, res) => {
 
 router.get("/transparency/:hospitalId", (req, res) => {
   const { hospitalId } = req.params;
-  connection.query(
+  pool.query(
     `SELECT AVG(score) AS score FROM ms_response AS r WHERE r.fk_question_id IN (7,13,15,17)` +
       `AND r.fk_hospital_id = ?`,
     [hospitalId],
@@ -82,7 +82,7 @@ router.get("/transparency/:hospitalId", (req, res) => {
 
 router.get("/Competitiontransparency/:hospitalId", (req, res) => {
   const { hospitalId } = req.params;
-  connection.query(
+  pool.query(
     `SELECT AVG(score) AS score FROM ms_response AS r WHERE r.fk_question_id IN (7,13,15,17)` +
       `AND r.fk_hospital_id != ?`,
     [hospitalId],
@@ -98,7 +98,7 @@ router.get("/Competitiontransparency/:hospitalId", (req, res) => {
 
 router.get("/relation/:hospitalId", (req, res) => {
   const { hospitalId } = req.params;
-  connection.query(
+  pool.query(
     `SELECT AVG(score) AS score FROM ms_response AS r WHERE r.fk_question_id IN (2,7,9,10,14,17)` +
       `AND r.fk_hospital_id = ?`,
     [hospitalId],
@@ -114,7 +114,7 @@ router.get("/relation/:hospitalId", (req, res) => {
 
 router.get("/Competitionrelation/:hospitalId", (req, res) => {
   const { hospitalId } = req.params;
-  connection.query(
+  pool.query(
     `SELECT AVG(score) AS score FROM ms_response AS r WHERE r.fk_question_id IN (2,7,9,10,14,17)` +
       `AND r.fk_hospital_id != ?`,
     [hospitalId],

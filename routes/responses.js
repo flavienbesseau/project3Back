@@ -1,7 +1,7 @@
 const express = require("express");
 
 const router = express.Router();
-const {connection} = require("../db");
+const {pool} = require("../db");
 
 router.post("/", (req, res) => {
   const responses = req.body; // Array of responses
@@ -11,7 +11,7 @@ router.post("/", (req, res) => {
     ""
   );
 
-  connection.query(
+  pool.query(
     `INSERT INTO ms_response(score, text_answer, post_date, pseudo, email, fk_question_id, fk_hospital_id, fk_specialty_id, fk_experience_id) VALUES ${insertString.substring(
       0,
       insertString.length - 2
@@ -29,7 +29,7 @@ router.post("/", (req, res) => {
 });
 
 router.get('/', (req, res) => {
-  connection.query(`SELECT * FROM ms_response`, (err, results) => {
+  pool.query(`SELECT * FROM ms_response`, (err, results) => {
     res.status(200).json(results);
   })
 });
