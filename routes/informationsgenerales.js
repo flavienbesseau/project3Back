@@ -1,7 +1,7 @@
 const express = require("express");
 
 const router = express.Router();
-const {connection} = require("../db");
+const {pool} = require("../db");
 
 router.get("/:hospitalId", (req, res) => {
   const { hospitalId } = req.params;
@@ -9,7 +9,7 @@ router.get("/:hospitalId", (req, res) => {
   const specialtyId = req.query.specialtyId || "%";
   const postDateStart = req.query.postDateStart || "0000-01-01";
   const postDateEnd = req.query.postDateEnd || "9999-12-31";
-  connection.query(
+  pool.query(
     `SELECT q.text_rating, r.score, r.fk_specialty_id, r.fk_hospital_id, r.fk_experience_id, r.post_date ` +
       `FROM ms_question AS q LEFT JOIN ms_response AS r ON r.fk_question_id = q.id ` +
       `WHERE r.fk_hospital_id = '${hospitalId}' ` +

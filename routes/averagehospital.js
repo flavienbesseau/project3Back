@@ -1,11 +1,11 @@
 const express = require("express");
 
 const router = express.Router();
-const {connection} = require("../db");
+const {pool} = require("../db");
 
 router.get("/:id", (req, res) => {
   const hospitalId = req.params.id;
-  connection.query(
+  pool.query(
     `SELECT AVG(score) AS score from ms_response WHERE fk_hospital_id = ${hospitalId} AND MONTH(post_date) = MONTH(CURRENT_DATE())`,
     (err, results) => {
       if (err || results.length === 0) {
