@@ -1,11 +1,11 @@
 const express = require("express");
 
 const router = express.Router();
-const {connection} = require("../db");
+const {pool} = require("../db");
 
 router.get("/doctorsRelation/:id", (req, res) => {
   const hospitalId = req.params.id;
-  connection.query(
+  pool.query(
     "SELECT AVG(score) AS score from ms_response " +
       `WHERE fk_hospital_id = ${hospitalId} ` +
       "AND MONTH(post_date) = MONTH(CURRENT_DATE()) " +
@@ -22,7 +22,7 @@ router.get("/doctorsRelation/:id", (req, res) => {
 
 router.get("/doctorsRelationPast/:id", (req, res) => {
   const hospitalId = req.params.id;
-  connection.query(
+  pool.query(
     "SELECT AVG(score) AS score from ms_response " +
       `WHERE fk_hospital_id = ${hospitalId} ` +
       "AND post_date > now() - interval 1 month " +
@@ -40,7 +40,7 @@ router.get("/doctorsRelationPast/:id", (req, res) => {
 
 router.get("/healthTeam/:id", (req, res) => {
   const hospitalId = req.params.id;
-  connection.query(
+  pool.query(
     "SELECT AVG(score) AS score from ms_response " +
       `WHERE fk_hospital_id = ${hospitalId} ` +
       "AND MONTH(post_date) = MONTH(CURRENT_DATE()) " +
@@ -57,7 +57,7 @@ router.get("/healthTeam/:id", (req, res) => {
 
 router.get("/healthTeamPast/:id", (req, res) => {
   const hospitalId = req.params.id;
-  connection.query(
+  pool.query(
     "SELECT AVG(score) AS score from ms_response " +
       `WHERE fk_hospital_id = ${hospitalId} ` +
       "AND post_date > now() - interval 1 month " +
@@ -74,7 +74,7 @@ router.get("/healthTeamPast/:id", (req, res) => {
 
 router.get("/explanationsInformations/:id", (req, res) => {
   const hospitalId = req.params.id;
-  connection.query(
+  pool.query(
     "SELECT AVG(score) AS score from ms_response " +
       `WHERE fk_hospital_id = ${hospitalId} ` +
       "AND MONTH(post_date) = MONTH(CURRENT_DATE()) " +
@@ -91,7 +91,7 @@ router.get("/explanationsInformations/:id", (req, res) => {
 
 router.get("/explanationsInformationsPast/:id", (req, res) => {
   const hospitalId = req.params.id;
-  connection.query(
+  pool.query(
     "SELECT AVG(score) AS score from ms_response " +
       `WHERE fk_hospital_id = ${hospitalId} ` +
       "AND post_date > now() - interval 1 month " +
@@ -108,7 +108,7 @@ router.get("/explanationsInformationsPast/:id", (req, res) => {
 
 router.get("/organisation/:id", (req, res) => {
   const hospitalId = req.params.id;
-  connection.query(
+  pool.query(
     "SELECT AVG(score) AS score from ms_response " +
       `WHERE fk_hospital_id = ${hospitalId} ` +
       "AND MONTH(post_date) = MONTH(CURRENT_DATE()) " +
@@ -125,7 +125,7 @@ router.get("/organisation/:id", (req, res) => {
 
 router.get("/organisationPast/:id", (req, res) => {
   const hospitalId = req.params.id;
-  connection.query(
+  pool.query(
     "SELECT AVG(score) AS score from ms_response " +
       `WHERE fk_hospital_id = ${hospitalId} ` +
       "AND post_date > now() - interval 1 month " +

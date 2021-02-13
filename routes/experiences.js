@@ -1,10 +1,10 @@
 const express = require("express");
 
 const router = express.Router();
-const {connection} = require("../db");
+const { pool } = require("../db");
 
 router.get("/", (req, res) => {
-  connection.query("SELECT * from ms_experience", (err, results) => {
+  pool.query("SELECT * from ms_experience", (err, results) => {
     if (err || results.length === 0) {
       res.status(500).send("Error retrieving data");
     } else {
